@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: googleapis/release-please-action@v4
-        id: release-please          
+        id: release-please
 
       - uses: actions/checkout@v4
         if: ${{ steps.release-please.outputs.releases_created }}
@@ -22,10 +22,9 @@ jobs:
       - name: Tag package1 and package2 modules
         if: ${{ steps.release-please.outputs.releases_created }}
         run: |
-          echo ${{ steps.release-please.outputs.tag_name }}
+          echo ${{ steps.release-please.outputs }}
           echo ${{ steps.release-please.outputs.paths_released }}
           echo ${{ fromJson(steps.release-please.outputs) }}
-          echo ${{ steps.release-please.outputs }}
           echo ${{ join(steps.release-please.outputs.*, '\n' )}}
           git config user.name github-actions[bot]
           git config user.email takirala@users.noreply.github.com
