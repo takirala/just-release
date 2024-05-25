@@ -25,8 +25,7 @@ jobs:
           echo ${{ steps.release-please.outputs.* }}
           echo ${{ steps.release-please.outputs.* }}
           echo ${{ join(steps.release-please.outputs.*, '\n\n|||\n\n' )}}
-          echo ${{ fromJson(steps.release-please.outputs) }}
-          echo ${{ fromJson(steps.release-please.outputs.paths_released) }}
+          echo ${{ steps.release-please.outputs.paths_released }}
           git config user.name github-actions[bot]
           git config user.email takirala@users.noreply.github.com
           git tag -a package1/${{ steps.release-please.outputs.package1--tag_name }} -m "Release package1/${{ steps.release-please.outputs.package1--tag_name }}"
