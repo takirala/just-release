@@ -22,7 +22,10 @@ jobs:
       - name: Tag package1 and package2 modules
         if: ${{ steps.release-please.outputs.releases_created }}
         run: |
-          echo ${{ steps.release-please.outputs | jq . }}
+          echo ${{ steps.release.outputs.tag_name }}
+          echo ${{ steps.release.outputs.paths_released }}
+          echo ${{ fromJson(steps.release.outputs) }}
+          echo ${{ steps.release-please.outputs }}
           echo ${{ join(steps.release-please.outputs.*, '\n' )}}
           git config user.name github-actions[bot]
           git config user.email takirala@users.noreply.github.com
