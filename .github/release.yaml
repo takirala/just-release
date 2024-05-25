@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: Run Release Please
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release-please
+
+      - uses: actions/checkout@v4
+        if: ${{ steps.release-please.outputs.releases_created }}
+
+      - name: Tag package1 and package2 modules
+        if: ${{ steps.release-please.outputs.releases_created }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email takirala@users.noreply.github.com
+          git tag -a package1/${{ steps.release-please.outputs.package1--tag_name }} -m "Release package1/${{ steps.release-please.outputs.package1--tag_name }}"
+          git tag -a package2/${{ steps.release-please.outputs.package2--tag_name }} -m "Release package2/${{ steps.release-please.outputs.package2--tag_name }}"
+          git push origin {package1,package2}/${{ steps.release-please.outputs.tag_name }}

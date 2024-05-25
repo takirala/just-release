@@ -10,7 +10,16 @@
       "draft": false,
       "prerelease": false,
       "extra-files": [
-        "package1/manifests/versioned.yaml"
+        {
+            "type": "yaml",
+            "path": "package1/manifests/versioned.yaml",
+            "jsonpath": "$.version"
+        },
+        {
+            "type": "yaml",
+            "path": "package1/manifests/versioned.yaml",
+            "jsonpath": "$.nested.sub.key"
+        }
       ]
     }
   },
