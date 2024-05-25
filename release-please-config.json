@@ -11,12 +11,12 @@
       "extra-files": [
         {
             "type": "yaml",
-            "path": "package1/manifests/versioned.yaml",
+            "path": "manifests/versioned.yaml",
             "jsonpath": "$.version"
         },
         {
             "type": "yaml",
-            "path": "package1/manifests/versioned.yaml",
+            "path": "manifests/versioned.yaml",
             "jsonpath": "$.nested.sub.key"
         }
       ]
