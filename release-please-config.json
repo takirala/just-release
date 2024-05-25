@@ -20,7 +20,6 @@
             "jsonpath": "$.nested.sub.key"
         }
       ],
-      "version-file": "package1/.release-please-manifest.json",
       "initial-version": "0.1.0"
     }
   },
