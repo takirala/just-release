@@ -20,7 +20,8 @@ jobs:
         if: ${{ steps.release-please.outputs.releases_created }}
 
       - name: Tag package1 and package2 modules
-        if: ${{ steps.release-please.outputs.releases_created }}
+        if: |
+          contains(fromJson(steps.release-please.outputs.paths_released), 'package1')
         run: |
           echo ${{ steps.release-please.outputs.* }}
           echo ${{ join(steps.release-please.outputs.*, '\n\n\n\n' )}}
