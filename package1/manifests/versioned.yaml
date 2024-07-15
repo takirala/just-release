@@ -1,4 +1,4 @@
-version: TODO
+version: 0.1.0
 nested:
   sub:
-    key: TODO
+    key: 0.1.0
